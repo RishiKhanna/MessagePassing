@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+
+    "name": "Assignment1_RohankAgarwal",
+    "description": "Extension to capture user behaviour on stack overflow page ",
+    "version": "1.0",
+
+    "permissions": ["contextMenus", "background", "tabs", "http://*/*", "https://*/*", "activeTab"],
+    "content_security_policy": "script-src 'self'; object-src 'self'",
+
+    "background": {
+        "scripts": ["bg.js"]
+    },
+
+    "browser_action": {
+        "default_title": "Google Mail"
+    },
+
+    "content_scripts": [{
+        "matches": ["https://hzlog-kibana-core.elastic.mobility.npr.aws.asurion.net/*"],
+        "js": ["c.js"]
+    }]
+}

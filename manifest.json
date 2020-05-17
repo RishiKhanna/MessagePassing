@@ -9,15 +9,16 @@
     "content_security_policy": "script-src 'self'; object-src 'self'",
 
     "background": {
-        "scripts": ["bg.js"]
+        "scripts": ["background/bg.js"]
     },
 
     "browser_action": {
-        "default_title": "Kibana Decryptor"
+        "default_title": "Kibana Decryptor",
+        "default_icon": "icon/kibbee.png"
     },
 
     "content_scripts": [{
         "matches": ["https://hzlog-kibana-core.elastic.mobility.npr.aws.asurion.net/*"],
-        "js": ["jquery.min.js", "element.js", "fetch.js", "script.js"]
+        "js": ["jquery.min.js", "content/element.js", "content/fetch.js", "script.js"]
     }]
 }

@@ -1,12 +1,10 @@
 console.log('Decrytor Script Initiated...');
-alert('Welcome to Kibana Logs Decryptor Chrome Extension!! \n\nClick within the highlighted area of toggle buttons for decryption');
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        console.log(sender.tab ?
-            "from a content script:" + sender.tab.url :
-            "from the extension");
-        if (request.greeting == "hello") {
+        if (request.init === "extension clicked") {
+
+            alert('Welcome to Kibana Logs Decryptor Chrome Extension!! \n\nClick within the highlighted area of toggle buttons for decryption');
 
             const EVENT_LISTENER = {
                 CLICK: 'click',
@@ -163,6 +161,6 @@ chrome.runtime.onMessage.addListener(
                 span.innerText = data;
                 span.style.color = COLOR.RED;
             }
-            sendResponse({ farewell: "goodbye" });
+            sendResponse({ completed: "JS file parsed successfully" });
         }
     });

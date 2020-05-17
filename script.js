@@ -58,8 +58,9 @@ chrome.runtime.onMessage.addListener(
                 const postData = new UTIL.string.CreateHTTPObject(POST_URL, UTIL.string.HTTP_METHODS.POST, span.textContent);
                 postData.fetchDecryptedData(function(data) {
                     if (data.startsWith('"awskms:aes')) {
-                        let postDataRenewed = Object.create(postData);
-                        postDataRenewed.body = data.substring(1, data.length - 1);
+                        //let postDataRenewed = Object.create(postData);
+                        const postDataRenewed = new UTIL.string.CreateHTTPObject(POST_URL, UTIL.string.HTTP_METHODS.POST, data.substring(1, data.length - 1));
+                        //postDataRenewed.body = data.substring(1, data.length - 1);
                         postDataRenewed.fetchDecryptedData(function(data) {
                             console.log(span, data);
                             span.innerText = data;
@@ -165,13 +166,3 @@ chrome.runtime.onMessage.addListener(
             sendResponse({ farewell: "goodbye" });
         }
     });
-
-
-
-
-// (function mainApp(utilities) {
-
-
-
-
-// }(UTIL.string));
